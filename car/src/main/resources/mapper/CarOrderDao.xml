@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.dao.CarOrderDao">
+
+    <resultMap id="BaseResultMap" type="com.car.entity.CarOrder">
+        <!--@Table car_order-->
+        <result property="id" column="ID" jdbcType="INTEGER"/>
+        <result property="orderId" column="ORDER_ID" jdbcType="VARCHAR"/>
+        <result property="remarks" column="REMARKS" jdbcType="VARCHAR"/>
+        <result property="deleteFlag" column="DELETE_FLAG" jdbcType="INTEGER"/>
+        <result property="driverId" column="DRIVER_ID" jdbcType="INTEGER"/>
+        <result property="userId" column="USER_ID" jdbcType="INTEGER"/>
+        <result property="isFinish" column="IS_FINISH" jdbcType="INTEGER"/>
+        <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          ID, ORDER_ID, REMARKS, DELETE_FLAG, DRIVER_ID, USER_ID, IS_FINISH, CREATE_TIME
+        from car_timetable.car_order
+        where ID = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          ID, ORDER_ID, REMARKS, DELETE_FLAG, DRIVER_ID, USER_ID, IS_FINISH, CREATE_TIME
+        from car_timetable.car_order
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          ID, ORDER_ID, REMARKS, DELETE_FLAG, DRIVER_ID, USER_ID, IS_FINISH, CREATE_TIME
+        from car_timetable.car_order
+        <where>
+            <if test="id != null">
+                and ID = #{id}
+            </if>
+            <if test="orderId != null and orderId != ''">
+                and ORDER_ID = #{orderId}
+            </if>
+            <if test="remarks != null and remarks != ''">
+                and REMARKS = #{remarks}
+            </if>
+            <if test="deleteFlag != null">
+                and DELETE_FLAG = #{deleteFlag}
+            </if>
+            <if test="driverId != null">
+                and DRIVER_ID = #{driverId}
+            </if>
+            <if test="userId != null">
+                and USER_ID = #{userId}
+            </if>
+            <if test="isFinish != null">
+                and IS_FINISH = #{isFinish}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into car_timetable.car_order(ORDER_ID, REMARKS, DELETE_FLAG, DRIVER_ID, USER_ID, IS_FINISH, CREATE_TIME)
+        values (#{orderId}, #{remarks}, #{deleteFlag}, #{driverId}, #{userId}, #{isFinish}, #{createTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update car_timetable.car_order
+        <set>
+            <if test="orderId != null and orderId != ''">
+                ORDER_ID = #{orderId},
+            </if>
+            <if test="remarks != null and remarks != ''">
+                REMARKS = #{remarks},
+            </if>
+            <if test="deleteFlag != null">
+                DELETE_FLAG = #{deleteFlag},
+            </if>
+            <if test="driverId != null">
+                DRIVER_ID = #{driverId},
+            </if>
+            <if test="userId != null">
+                USER_ID = #{userId},
+            </if>
+            <if test="isFinish != null">
+                IS_FINISH = #{isFinish},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime},
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from car_timetable.car_order where ID = #{id}
+    </delete>
+
+</mapper>
