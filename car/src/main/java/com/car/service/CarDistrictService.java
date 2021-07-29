@@ -51,5 +51,11 @@ public interface CarDistrictService {
      * @return 是否成功
      */
     boolean deleteById(Long districtid);
-
+    /**
+     * 通过cityID查询数据
+     *
+     * @param cityId 主键
+     * @return 是否成功
+     */
+    List<CarDistrict> queryAllByCId(Long cityId);
 }

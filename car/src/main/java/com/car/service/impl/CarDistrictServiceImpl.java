@@ -76,4 +76,15 @@ public class CarDistrictServiceImpl implements CarDistrictService {
     public boolean deleteById(Long districtid) {
         return this.carDistrictDao.deleteById(districtid) > 0;
     }
+
+    /**
+     * 通过cityID查询数据
+     *
+     * @param cityId 主键
+     * @return 是否成功
+     */
+    @Override
+    public List<CarDistrict> queryAllByCId(Long cityId) {
+        return carDistrictDao.queryAllByCId(cityId);
+    }
 }

@@ -51,5 +51,10 @@ public interface CarProvinceService {
      * @return 是否成功
      */
     boolean deleteById(Long provinceid);
-
+    /**
+     * 查询全部省
+     *
+     * @return 单条数据
+     */
+    List<CarProvince> queryAll();
 }

@@ -61,5 +61,11 @@ public interface CarCityDao {
      * @return 影响行数
      */
     int deleteById(Long cityid);
-
+    /**
+     * 通过省id查询批量数据
+     *
+     * @param id 主键
+     * @return 单条数据
+     */
+    List<CarCity> selectByPid(Long id);
 }

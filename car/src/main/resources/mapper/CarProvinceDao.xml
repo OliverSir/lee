@@ -31,20 +31,6 @@
         select
           ProvinceID, ProvinceName, DateCreated, DateUpdated
         from car_timetable.car_province
-        <where>
-            <if test="provinceid != null">
-                and ProvinceID = #{provinceid}
-            </if>
-            <if test="provincename != null and provincename != ''">
-                and ProvinceName = #{provincename}
-            </if>
-            <if test="datecreated != null">
-                and DateCreated = #{datecreated}
-            </if>
-            <if test="dateupdated != null">
-                and DateUpdated = #{dateupdated}
-            </if>
-        </where>
     </select>
 
     <!--新增所有列-->

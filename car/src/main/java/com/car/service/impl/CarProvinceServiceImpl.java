@@ -76,4 +76,14 @@ public class CarProvinceServiceImpl implements CarProvinceService {
     public boolean deleteById(Long provinceid) {
         return this.carProvinceDao.deleteById(provinceid) > 0;
     }
+
+    /**
+     * 查询全部省
+     *
+     * @return 单条数据
+     */
+    @Override
+    public List<CarProvince> queryAll() {
+        return carProvinceDao.queryAll();
+    }
 }
