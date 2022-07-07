@@ -88,11 +88,5 @@
     <delete id="deleteById">
         delete from car_timetable.car_city where CityID = #{cityid}
     </delete>
-    <!--根据省id查询-->
-    <select id="selectByPid" resultMap="BaseResultMap">
-        select
-            CityID, CityName, ZipCode, ProvinceID, DateCreated, DateUpdated
-        from car_timetable.car_city
-        where ProvinceID = #{id}
-    </select>
+
 </mapper>

@@ -76,16 +76,4 @@ public class CarCityServiceImpl implements CarCityService {
     public boolean deleteById(Long cityid) {
         return this.carCityDao.deleteById(cityid) > 0;
     }
-
-    /**
-     * 通过省id查询批量数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @Override
-    public List<CarCity> selectByPid(Long id) {
-        return carCityDao.selectByPid(id);
-    }
-
 }

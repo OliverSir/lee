@@ -21,4 +21,4 @@ mybatis:
 
 logging:
   root:
-    level: info
+    level: debug
